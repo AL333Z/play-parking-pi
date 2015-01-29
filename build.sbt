@@ -1,4 +1,4 @@
-name := """play-parking"""
+name := """play-parking-pi"""
 
 version := "1.0-SNAPSHOT"
 
