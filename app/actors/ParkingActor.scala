@@ -28,6 +28,10 @@ object ParkingActor {
 class ParkingActor(capacity: Int, redActor: ActorRef, greenActor: ActorRef)
   extends Actor with ActorLogging {
 
+  // intialize the system, sending two message to self (so the leds initialize without any overhead)
+  self ! CarArrived
+  self ! CarGone
+
   def receive = LoggingReceive { parkingStatus(capacity) }
 
   def parkingStatus(freeSlots: Int): Receive = {
