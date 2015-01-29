@@ -1,6 +1,5 @@
 package actors
 
-import akka.actor.ActorLogging
 import akka.actor.Actor
 import akka.actor.ActorRef
 import akka.event.LoggingReceive
@@ -26,13 +25,13 @@ object ParkingActor {
  * An parking with a fixed number of slots.
  */
 class ParkingActor(capacity: Int, redActor: ActorRef, greenActor: ActorRef)
-  extends Actor with ActorLogging {
+  extends Actor {
 
   // intialize the system, sending two message to self (so the leds initialize without any overhead)
   self ! CarArrived
   self ! CarGone
 
-  def receive = LoggingReceive { parkingStatus(capacity) }
+  def receive = parkingStatus(capacity)
 
   def parkingStatus(freeSlots: Int): Receive = {
     case CarArrived =>

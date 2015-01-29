@@ -1,6 +1,5 @@
 package actors
 
-import akka.actor.ActorLogging
 import akka.actor.Actor
 import akka.actor.ActorRef
 import akka.event.LoggingReceive
@@ -22,13 +21,11 @@ object LedActor {
 /**
  * An parking with a fixed number of slots.
  */
-class LedActor(pin: Int) extends Actor with ActorLogging {
+class LedActor(pin: Int) extends Actor {
 
   val led = new Led(pin)
-  
-  led.switchOn() //TODO remove this..
 
-  def receive = LoggingReceive {
+  def receive: Receive = {
     case SwitchOn  => led.switchOn()
     case SwitchOff => led.switchOff()
   }
