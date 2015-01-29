@@ -9,7 +9,7 @@ Companion project of [https://github.com/AL333Z/arduino-parking](arduino-parking
 A dead simple app made with play framework, that can run on a raspberry pi.
 
 ## Circuit
-The raspberry pi has one green led connected on GPIO 1 and one red lead on GPIO0.
+The raspberry pi has one green led connected on GPIO1 and one red lead on GPIO0.
 
 //TODO add fritzing scheme
 
