@@ -14,7 +14,7 @@ import msglib._
  * Companion object for UPDMulticastWrapperActor.
  */
 object UPDMulticastWrapperActor {
-  def props(parkingActor: ActorRef): Props = Props(classOf[UPDMulticastWrapperActor])
+  def props(): Props = Props(classOf[UPDMulticastWrapperActor])
 }
 
 /**
@@ -25,12 +25,10 @@ object UPDMulticastWrapperActor {
  *  NOTE: normally this is not a good practice, but the APIs used to receive a
  *  msg from UDP are blocking, so wasting one thread here may be reasonable.
  */
-class UPDMulticastWrapperActor(parkingActor: ActorRef) extends Actor {
+class UPDMulticastWrapperActor() extends Actor {
 
-  self ! "Start"
-  
   def receive: Receive = {
-    case _ => {
+    case parkingActor: ActorRef => {
 
       println("UPD listener started.")
 
@@ -52,6 +50,7 @@ class UPDMulticastWrapperActor(parkingActor: ActorRef) extends Actor {
             println("Failed receiveMsg. Killing myself.." + t.toString())
             self ! PoisonPill
         }
+
       }
     }
   }

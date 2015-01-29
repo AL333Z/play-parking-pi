@@ -10,18 +10,18 @@ object Global extends GlobalSettings {
 
   override def onStart(app: Application) {
 
-    // Leds
-    val greenLedActor = Akka.system.actorOf(LedActor.props(0), "greenLedActor") //GPIO 0
-    val redLedActor = Akka.system.actorOf(LedActor.props(1), "redLedActor") //GPIO 1
+    Logger.info("*********Application has started.****************************")
 
-    // Parking actor
+    val udpActor = Akka.system.actorOf(UPDMulticastWrapperActor.props, "udp")
+
+    val greenLedActor = Akka.system.actorOf(LedActor.props(0), "greenLedActor")
+    val redLedActor = Akka.system.actorOf(LedActor.props(1), "redLedActor")
+
     val parkingActor = Akka.system.actorOf(ParkingActor.props(2, greenLedActor,
       redLedActor), "parking")
 
-    // Udp
-    val udpActor = Akka.system.actorOf(UPDMulticastWrapperActor.props(parkingActor), "udp")
-
-    Logger.info("*********Application has started.****************************")
+    // starts the udpActor work, sending him the parkingActor ref
+    udpActor ! parkingActor
   }
 
 }
