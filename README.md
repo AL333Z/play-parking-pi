@@ -18,6 +18,19 @@ The overall architecture of the system is divided in the following main parts:
 
 The code contained in this repository refers only on the first and second points.
 
+#Actor system and web app
+It's just a play framework app, with some additional actors.
+
+![](images/actors.png)
+
+`UPDMulticastWrapperActor` is a wrapper on the UPD/IP message service. It maps the messages and forwards `CarArrived` and `CarGone` to the main actor of the system, `ParkingActor`.
+
+`ParkingActor` is initialized with a fixed number of parking spaces, and keeps memory of system state (thanks to the messages depicted above). When the car park is full, it turns on the red led, otherwise only the green led is turned on.
+
+`LedActor` only receives two kind of messages (`SwitchOn` and`SwitchOff`) and it interacts with its GPIO pin.
+
+The interacton with users from HTTP is handled by a single controller (`Application.scala`), that interact with the underlying actor system (akka) using the ask pattern (`?` operator), with the `GetParkingStatus` message, receiving the number of free parking spaces as a response.
+
 #Hardware
 The raspberry pi has one green led connected on GPIO1 and one red lead on GPIO0.
 
