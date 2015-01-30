@@ -51,6 +51,6 @@ The raspberry pi has one green led connected on GPIO1 and one red lead on GPIO0.
 - `chmod +x bin/play-parking-pi`
 - `sudo ./bin/play-parking-pi -J-Xms64M -J-Xmx128M`
 - open your browser to `<your-raspberry-ip>:9000`
-- enjoy
-- 
+- enjoy :)
+
 ![](images/pic.png)
