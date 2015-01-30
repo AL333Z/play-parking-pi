@@ -50,3 +50,5 @@ The raspberry pi has one green led connected on GPIO1 and one red lead on GPIO0.
 - cd `your folder on raspberry`
 - `chmod +x bin/play-parking-pi`
 - `sudo ./bin/play-parking-pi -J-Xms64M -J-Xmx128M`
+
+![](images/pic.png)
