@@ -45,10 +45,12 @@ The raspberry pi has one green led connected on GPIO1 and one red lead on GPIO0.
 - clone or download the project
 - `cd <your folder>`
 - change `Global.scala`, to configure the number of parking slot (default is 2)
-- `play dist` or `sbt dist`
+- `play dist` or `sbt dist` or `activator dist`
 - unzip and move the folder to raspberry pi
-- cd `your folder on raspberry`
+- cd `your folder on raspberry/play-parking-pi`
 - `chmod +x bin/play-parking-pi`
 - `sudo ./bin/play-parking-pi -J-Xms64M -J-Xmx128M`
-
+- open your browser to `<your-raspberry-ip>:9000`
+- enjoy
+- 
 ![](images/pic.png)
