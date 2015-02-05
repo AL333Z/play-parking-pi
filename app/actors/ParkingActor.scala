@@ -27,9 +27,9 @@ object ParkingActor {
 class ParkingActor(capacity: Int, redActor: ActorRef, greenActor: ActorRef)
   extends Actor {
 
-  // intialize the system, sending two message to self (so the leds initialize without any overhead)
-  self ! CarArrived
-  self ! CarGone
+  // intialize the system
+  greenActor ! SwitchOn
+  redActor ! SwitchOff
 
   def receive = parkingStatus(capacity)
 
