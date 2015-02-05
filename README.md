@@ -8,7 +8,7 @@ A dead simple app made with play framework, that can run on a raspberry pi.
 
 #System architecture
 
-![](images/arch.png)
+![](images/arch-play.png)
 
 The overall architecture of the system is divided in the following main parts:
 - the web app and the actor system, running on the raspberry pi and connected to 2 leds via GPIO;
